@@ -1,6 +1,5 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled1/view/components/bottomnavigatorbar.dart';
 import 'package:untitled1/view/components/search_bar.dart';
 import 'package:input_quantity/input_quantity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -63,46 +62,44 @@ class _ShopPageState extends State<ShopPage> {
         backgroundColor: kBackgroundColor,
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
-                },
-                icon: Icon(Icons.home, color: Colors.white, size: 30),
-              ),
-              SizedBox(width: 10),
-              Expanded(child: SearchBarComponent()),
-              SizedBox(width: 10),
-              Stack(
-                textDirection: TextDirection.rtl,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.shopping_cart_sharp, color: kIconColor, size: 30),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+              },
+              icon: const Icon(Icons.home, color: Colors.white, size: 30),
+            ),
+            const SizedBox(width: 10),
+            const Expanded(child: SearchBarComponent()),
+            const SizedBox(width: 10),
+            Stack(
+              textDirection: TextDirection.rtl,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.shopping_cart_sharp, color: kIconColor, size: 30),
+                ),
+                Container(
+                  height: 17,
+                  width: 17,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(1.0),
+                    child: Center(
+                        child: Text('$_cartItemCount',
+                            style: const TextStyle(
+                                color: Colors.red,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold))),
                   ),
-                  Container(
-                    height: 17,
-                    width: 17,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Padding(
-                      padding: EdgeInsets.all(1.0),
-                      child: Center(
-                          child: Text('$_cartItemCount',
-                              style: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold))),
-                    ),
-                  )
-                ],
-              ),
-            ],
-          ),
+                )
+              ],
+            ),
+          ],
         ),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(100.0),
@@ -112,24 +109,22 @@ class _ShopPageState extends State<ShopPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   width: MediaQuery.of(context).size.width,
                   color: Colors.white,
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        child: Row(
-                          children: [
-                            Icon(CommunityMaterialIcons.home_city_outline,
-                                color: Colors.red, size: 30),
-                            SizedBox(width: 10),
-                            Text(
-                              'All Vendor',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          Icon(CommunityMaterialIcons.home_city_outline,
+                              color: Colors.red, size: 30),
+                          SizedBox(width: 10),
+                          Text(
+                            'All Vendor',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
                       Icon(
                         Icons.arrow_forward_ios,
@@ -139,8 +134,8 @@ class _ShopPageState extends State<ShopPage> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
                     'Shop > Actions',
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
@@ -162,7 +157,6 @@ class _ShopPageState extends State<ShopPage> {
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                     onTap: () {
-                      print('a');
                     },
                     child: Container(
                         width: 100,
@@ -174,12 +168,12 @@ class _ShopPageState extends State<ShopPage> {
                             Expanded(
                               child: ClipRRect(
                                 child: Image.asset(
-                                  '${_kindBook[index].imagePath}',
+                                  _kindBook[index].imagePath,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
-                            Text('${_kindBook[index].name}')
+                            Text(_kindBook[index].name)
                           ],
                         )),
                   );
@@ -187,13 +181,13 @@ class _ShopPageState extends State<ShopPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 20),
+              margin: const EdgeInsets.only(top: 20),
               height: MediaQuery.of(context).size.height,
               child: GridView.count(
                 crossAxisCount: 2,
                 children: _books.map((book) {
                   return Container(
-                    margin: EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(8),
                     child: Container(
                       decoration: BoxDecoration(
                           border: Border.all(
@@ -214,20 +208,20 @@ class _ShopPageState extends State<ShopPage> {
                               ),
                             ),
                             Text(
-                              '${book.title}',
-                              style: TextStyle(fontSize: 15),
+                              book.title,
+                              style: const TextStyle(fontSize: 15),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   '${book.price}\$',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.red,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15),
                                 ),
-                                Text(
+                                const Text(
                                   'Quyển',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -235,7 +229,7 @@ class _ShopPageState extends State<ShopPage> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -248,7 +242,7 @@ class _ShopPageState extends State<ShopPage> {
                                   },
                                 ),
                                 IconButton(
-                                  icon: Icon(Icons.shopping_cart),
+                                  icon: const Icon(Icons.shopping_cart),
                                   onPressed: () {
                                     setState(() {
                                       _cartItemCount += _currentQty;

@@ -10,6 +10,6 @@ class ImageAsset extends StatelessWidget {
       path,
       width: 24, // Set width according to your preference
       height: 24, // Set height according to your preference
-    );;
+    );
   }
 }

@@ -7,7 +7,6 @@ import 'components/bottomnavigatorbar.dart';
 import 'components/search_bar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:community_material_icon/community_material_icon.dart';
 import '../data/str_json_book.dart';
 
 class HomePage extends StatefulWidget {
@@ -70,8 +69,8 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(10)
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(1.0),
-                  child: Center(child: Text('${_cartItemCount}', style: TextStyle(color: Colors.red, fontSize: 12, fontWeight: FontWeight.bold),)),
+                  padding: const EdgeInsets.all(1.0),
+                  child: Center(child: Text('$_cartItemCount', style: const TextStyle(color: Colors.red, fontSize: 12, fontWeight: FontWeight.bold),)),
                 ),
               )
             ],
@@ -98,10 +97,10 @@ class _HomePageState extends State<HomePage> {
             ],
           )
         ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(80.0), // Adjust the height as needed
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(80.0), // Adjust the height as needed
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: SearchBarComponent(), // Include your search bar component here
           ),
         ),
@@ -154,82 +153,74 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 10),
 
-                Divider(
+                const Divider(
                   color: Colors.grey,
                   thickness: 3,
                 ),
 
-                Container(
-                    child:Column(
-                      children:[
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('CONNECTED VENDERS', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFFae0001)
-                              ),),
-                              Container(
-                                child: Row(
-                                  children: [
-                                    Text('View more'),
-                                    Icon(Icons.navigate_next),
-                                  ],
-                                ),
+                Column(
+                  children:[
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('CONNECTED VENDERS', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFFae0001)
+                        ),),
+                        Row(
+                          children: [
+                            Text('View more'),
+                            Icon(Icons.navigate_next),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.1, // Chiều cao của ListView
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal, // Hướng cuộn là ngang
+                        itemCount: 5,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Card(
+                            margin: const EdgeInsets.symmetric(horizontal: 8),
+                            child: Container(
+                              width: 100, // Chiều rộng cho từng item
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10), // Bo góc
+                              ),
+                              child: ClipRRect(
+                                child: Image.asset(_logos[index], fit: BoxFit.cover,),
                               )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.1, // Chiều cao của ListView
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal, // Hướng cuộn là ngang
-                            itemCount: 5,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Card(
-                                margin: EdgeInsets.symmetric(horizontal: 8),
-                                child: Container(
-                                  width: 100, // Chiều rộng cho từng item
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10), // Bo góc
-                                  ),
-                                  child: ClipRRect(
-                                    child: Image.asset(_logos[index], fit: BoxFit.cover,),
-                                  )
-                                  ),
-                              );
-                            },
-                          ),
-                        ),
-                      ]
-                    )
+                              ),
+                          );
+                        },
+                      ),
+                    ),
+                  ]
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Divider(
+                const Divider(
                   color: Colors.grey,
                   thickness: 3,
                 ),
                 Column(
                   children: [
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('BOUGHT PRODUCTS', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFFae0001)
                         ),),
-                        Container(
-                          child: Row(
-                            children: [
-                              Text('View more'),
-                              Icon(Icons.navigate_next),
-                            ],
-                          ),
+                        Row(
+                          children: [
+                            Text('View more'),
+                            Icon(Icons.navigate_next),
+                          ],
                         )
                       ],
                     ),
 
-                    Container(
+                    SizedBox(
                       height: MediaQuery.of(context).size.height * 0.2, // Chiều cao của ListView
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal, // Hướng cuộn là ngang
@@ -240,7 +231,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 width: 100, // Chiều rộng cho từng item
-                                margin: EdgeInsets.symmetric(horizontal: 8), // Khoảng cách giữa các item
+                                margin: const EdgeInsets.symmetric(horizontal: 8), // Khoảng cách giữa các item
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10), // Bo góc
                                 ),
@@ -248,8 +239,8 @@ class _HomePageState extends State<HomePage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Expanded(child: Image.asset('assets/${_books[index].imagePath}', fit: BoxFit.cover,)),
-                                      Text('${_books[index].title}', textAlign: TextAlign.center,),
-                                      Text('${_books[index].price} \$', textAlign: TextAlign.center,style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),)
+                                      Text(_books[index].title, textAlign: TextAlign.center,),
+                                      Text('${_books[index].price} \$', textAlign: TextAlign.center,style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),)
                                     ],
                                   )
                               ),
@@ -258,7 +249,7 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: MediaQuery.of(context).size.height * 0.2, // Chiều cao của ListView
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal, // Hướng cuộn là ngang
@@ -269,7 +260,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                   width: 100, // Chiều rộng cho từng item
-                                  margin: EdgeInsets.symmetric(horizontal: 8), // Khoảng cách giữa các item
+                                  margin: const EdgeInsets.symmetric(horizontal: 8), // Khoảng cách giữa các item
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10), // Bo góc
                                   ),
@@ -277,8 +268,8 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Expanded(child: Image.asset('assets/${_books[index+10].imagePath}', fit: BoxFit.cover,)),
-                                      Text('${_books[index+10].title}', textAlign: TextAlign.center,),
-                                      Text('${_books[index+10].price}\$', textAlign: TextAlign.center,style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),)
+                                      Text(_books[index+10].title, textAlign: TextAlign.center,),
+                                      Text('${_books[index+10].price}\$', textAlign: TextAlign.center,style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),)
                                     ],
                                   )
                               ),
@@ -294,7 +285,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       // backgroundColor: kBackgroundColor,
-      bottomNavigationBar: BottomNavigatorBarNRetail(initIndex: 0),
+      bottomNavigationBar: const BottomNavigatorBarNRetail(initIndex: 0),
     );
 
   }

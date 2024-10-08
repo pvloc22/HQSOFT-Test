@@ -45,23 +45,23 @@ class _BottomNavigatorBarNRetailState extends State<BottomNavigatorBarNRetail> {
       type: BottomNavigationBarType.fixed,
       items:  <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: _selectedIndex != 0 ? ImageAsset(path: 'assets/icon/ic_bot_homepage.png',): ImageAsset(path: 'assets/icon/ic_bot_homepage_focus.png',),
+          icon: _selectedIndex != 0 ? const ImageAsset(path: 'assets/icon/ic_bot_homepage.png',): const ImageAsset(path: 'assets/icon/ic_bot_homepage_focus.png',),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: _selectedIndex != 1 ? ImageAsset(path: 'assets/icon/ic_bot_category.png',): ImageAsset(path: 'assets/icon/ic_bot_category_focus.png',),
+          icon: _selectedIndex != 1 ? const ImageAsset(path: 'assets/icon/ic_bot_category.png',): const ImageAsset(path: 'assets/icon/ic_bot_category_focus.png',),
           label: 'Shop',
         ),
         BottomNavigationBarItem(
-          icon: _selectedIndex != 2? ImageAsset(path: 'assets/icon/ic_bot_messenger.png',) : ImageAsset(path: 'assets/icon/ic_bot_messenger_focus.png',),
+          icon: _selectedIndex != 2? const ImageAsset(path: 'assets/icon/ic_bot_messenger.png',) : const ImageAsset(path: 'assets/icon/ic_bot_messenger_focus.png',),
           label: 'Chat',
         ),
         BottomNavigationBarItem(
-          icon: _selectedIndex != 3 ? ImageAsset(path: 'assets/icon/ic_bot_shop.png',) : ImageAsset(path: 'assets/icon/ic_bot_shop_focus.png',),
+          icon: _selectedIndex != 3 ? const ImageAsset(path: 'assets/icon/ic_bot_shop.png',) : const ImageAsset(path: 'assets/icon/ic_bot_shop_focus.png',),
           label: 'My Order',
         ),
         BottomNavigationBarItem(
-          icon: _selectedIndex != 4 ? ImageAsset(path: 'assets/icon/ic_bot_account.png',): ImageAsset(path: 'assets/icon/ic_bot_account_focus.png',),
+          icon: _selectedIndex != 4 ? const ImageAsset(path: 'assets/icon/ic_bot_account.png',): const ImageAsset(path: 'assets/icon/ic_bot_account_focus.png',),
           label: 'Account',
         ),
       ],

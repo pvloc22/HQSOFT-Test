@@ -4,6 +4,8 @@ import '../../constant.dart';
 
 
 class SearchBarComponent extends StatelessWidget {
+  const SearchBarComponent({super.key});
+
 
 
   @override
@@ -25,7 +27,7 @@ class SearchBarComponent extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onSurface),
           ),
           hintText: 'Search',
-          contentPadding: EdgeInsets.symmetric(vertical: 10),
+          contentPadding: const EdgeInsets.symmetric(vertical: 10),
           hintStyle: TextStyle(
               fontSize: 15, color: Theme.of(context).colorScheme.onSurface),
           enabledBorder: OutlineInputBorder(
